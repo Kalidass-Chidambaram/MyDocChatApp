@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+.res {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.remove-margin {
+    margin: 0;
+}
+
+.remove-padding {
+    padding: 0 !important;
+}
+
+.algn-center {
+    text-align: center;
+}
