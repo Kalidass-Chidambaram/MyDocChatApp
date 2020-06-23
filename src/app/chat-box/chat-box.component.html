@@ -8,27 +8,27 @@
                     <h5 class="col-xs-12 algn-center">Consult a Doctor</h5>
                 </div>
                 <div id="msg-content-area" class="col-xs-12 msg-content">
-                    <div class="col-xs-12 remove-padding msg-align-prop incoming_msg">
-                        <div class="incoming_msg_img">
-                            <p>SEHA</p>
-                        </div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>Test which is a new approach to have all
-                                    solutions</p>
+                    <ng-container *ngFor="let msgObj of msgArray">
+                        <div *ngIf="msgObj.userId !== userId" class="col-xs-12 remove-padding msg-align-prop incoming_msg">
+                            <div class="incoming_msg_img">
+                                <p>SEHA</p>
+                            </div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>{{ msgObj.message }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 remove-padding msg-align-prop outgoing_msg">
-                        <div class="sent_msg_img">
-                            <p>x</p>
+                        <div *ngIf="msgObj.userId === userId"  class="col-xs-12 remove-padding msg-align-prop outgoing_msg">
+                            <div class="sent_msg_img">
+                                <p>x</p>
+                            </div>
+                            <div class="sent_msg">
+                                <p>{{ msgObj.message }}</p>
+                            </div>
                         </div>
-                        <div class="sent_msg">
-                            <p>Test which is a new approach to have all
-                                solutions</p>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 remove-padding msg-align-prop incoming_msg">
+                    </ng-container>
+                    <!-- <div class="col-xs-12 remove-padding msg-align-prop incoming_msg">
                         <div class="incoming_msg_img">
                             <p>SEHA</p>
                         </div>
@@ -69,7 +69,7 @@
                                     products, at a price anyone can afford.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <div class="col-xs-12 remove-padding msg-align-prop incoming_msg">
                         <div class="incoming_msg_img">
                             <p>SEHA</p>
@@ -92,9 +92,9 @@
                     </div> -->
                 </div>
                 <div class="col-xs-12 input-group blk-send-wrapper">
-                    <input id="btn-input" type="text" class="form-control input-sm chat_input"
+                    <input id="btn-input" [(ngModel)]="messageToSend" type="text" class="form-control input-sm chat_input"
                         placeholder="Write your message here..." />
-                    <span class="input-group-btn">
+                    <span class="input-group-btn" (click)="sendMessage()">
                         <img class="btn-send" src="assets/images/sendMessage.png" alt="send">
                     </span>
                 </div>
